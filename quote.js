@@ -14,14 +14,33 @@ window.addEventListener("DOMContentLoaded", function () {
 
 // TODO: Modify to use Fetch API
 function fetchQuotes(topic, count) {
-   let xhr = newXMLHttpRequest();
-   xhr.responseType = "json";
-   
-   let html = "<ol>";
-   for (let c = 1; c <= count; c++) {
-      html += `<li>Quote ${c} - Anonymous</li>`;
-   }
-   html += "</ol>";
+   const endpoint= "https://wp.zybooks.com/quotes.php"
+   const queryString = "topic = ${topic}&count=${count}"
+   const url = endpoint + "?" + queryString
+   fetch(url)  
+   .then(response => response.json())
+   .then(quotes => {
+      const quotesDiv = document.querySelector("#quotes")
+      if (quotes.error){
+         quotesDiv.innerHtml = quotes.error
+      } 
+      else {
+         let html ="<ol>"
+         for (let quoteItem of quote){
+            html += "<li>${quoteItem.quote} - ${quoteItem.source}</li>"
+         }
+         html += "</ol>"
 
-   document.querySelector("#quotes").innerHTML = html;
+         quotesDiv.innerHTML = html
+      {
+         
+      })
+
 }
+   
+
+
+
+
+
+   
