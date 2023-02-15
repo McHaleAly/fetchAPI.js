@@ -16,7 +16,8 @@ window.addEventListener("DOMContentLoaded", function () {
 function fetchQuotes(topic, count) {
    const endpoint= "https://wp.zybooks.com/quotes.php"
    const queryString = "topic = ${topic}&count=${count}"
-   const url = endpoint + "?" + queryString
+   const url = '${endpoint}?${queryString}'
+
    fetch(url)  
    .then(response => response.json())
    .then(quotes => {
