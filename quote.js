@@ -14,7 +14,7 @@ window.addEventListener("DOMContentLoaded", function () {
 
 // TODO: Modify to use Fetch API
 function fetchQuotes(topic, count) {
-   
+   let xhr = newXMLHttpRequest();
    let html = "<ol>";
    for (let c = 1; c <= count; c++) {
       html += `<li>Quote ${c} - Anonymous</li>`;
